@@ -4,7 +4,7 @@ const fs = require("fs");
 
 var app = express();
 
-var port = 8000;
+var port = process.env.PORT || 3000;
 
 hbs.registerPartials(__dirname + "/views/partials");
 app.set("view engine", "hbs");
@@ -62,4 +62,6 @@ app.get("/bad", (req, res) => {
   );
 });
 
-app.listen(port);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}.`)
+});
